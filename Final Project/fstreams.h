@@ -13,6 +13,3 @@ public:
 	void read(string file)
 };
 
-floor::floor(){
-	for ()
-}
