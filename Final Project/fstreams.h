@@ -5,11 +5,11 @@
 
 using namespace std;
 
-class floor{
+class Floor{
 private:
 	char map[6][6];
 public:
-	floor();
-	void read(string file)
+	Floor();
+	void readin(fstream &in);
 };
 

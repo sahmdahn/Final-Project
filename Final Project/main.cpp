@@ -1,11 +1,28 @@
 #include <iostream>
 #include <stdlib.h>
 #include <fstream>
-#include "block.h"
+#include "fstreams.h"
 
 using namespace std;
 
 void main(){
+	Floor f[5];
+	
+
+	fstream in;
+	in.open("map.txt", ios::in);
+	for (int i = 0; i < 5; i++){
+		f[i].readin(in);
+	}
+	in.close();
+		
+
+
+
+
+
+	/*
+
 	block *pos = NULL, *map = new block();
 
 	block *row = map;
@@ -41,7 +58,7 @@ void main(){
 
 
 
-/*	int numbers[5];
+	int numbers[5];
 	int * p;
 
 	p = numbers;
