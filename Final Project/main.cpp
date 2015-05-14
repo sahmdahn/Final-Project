@@ -19,7 +19,7 @@ void main(){
 	Initial(f);
 
 	for (int zCoord = 0; zCoord < 5; zCoord++){
-
+		f[zCoord].Start(x, y);
 	}
 
 	//User input for direction
