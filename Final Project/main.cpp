@@ -13,7 +13,6 @@ void main(){
 	int z = -1;
 	char dir;
 
-	
 	Floor f[5];
 
 	Initial(f);

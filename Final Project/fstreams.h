@@ -16,6 +16,5 @@ public:
 	
 	//Getters
 	char Get(int x, int y);
-	void bob();
 };
 
