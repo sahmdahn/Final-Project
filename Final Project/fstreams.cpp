@@ -9,40 +9,32 @@ Floor::Floor(){
 	}
 }
 
-void Floor::readin(fstream &in){
-	in.open("map.txt", ios::in);
-	if (in.is_open()){
-		char tmp;
-		while (!in.eof()){
-			in.get(tmp);
-			//in >> map[x][y];
-			cout << tmp;
+void Floor::Start(int &xCoord, int &yCoord){
+	for (int y = 0; y < 6; y++){
+		for (int x = 0; x < 6; x++){
+			cout << map[x][y];
 		}
-		//for (int x = 0; x < 6; x++) {
-			//for (int y = 0; y < 6; y++) {
-				
-				
-			//}
-		//}
 		cout << endl;
 	}
-}
-
-void Floor::Start(int &xCoord, int &yCoord){
-	for (int x = 0; x < 6; x++){
-		for (int y = 0; y < 6; y++){
+	system("pause");
+	
+	for (int y = 0; y < 6; y++){
+		for (int x = 0; x < 6; x++){
 			if (map[x][y] == 'S'){
 				xCoord = x;
 				yCoord = y;
 				return;
 			}
+			if (f[z + 1].Get(x, y) != '*'){
+
+			}
 		}
 	}
 }
 
+/*Testing the value to make sure its not
+biggger/smaller than the array*/
 bool Floor::CanMove(int x, int y){
-	/*Testing the value to make sure its not
-	biggger/smaller than the array*/
 	if (x < 0 || x>6){
 		return false;
 	}
@@ -58,7 +50,13 @@ bool Floor::CanMove(int x, int y){
 	}
 }
 
+
 //Getters
 char Floor::Get(int x, int y){
 	return map[x][y];
+}
+
+//Setters
+void Floor::Set(int x, int y, char v) {
+	map[x][y] = v;
 }

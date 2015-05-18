@@ -1,7 +1,9 @@
 #include <iostream>
 #include <stdlib.h>
 #include <fstream>
+
 #include "fstreams.h"
+#include "game.h"
 
 using namespace std;
 
@@ -11,42 +13,47 @@ void main(){
 	int x = -1;
 	int y = -1;
 	int z = -1;
-	char dir;
 
 	Floor f[5];
 
 	Initial(f);
 
+	cout << "The map." << endl;
 	for (int zCoord = 0; zCoord < 5; zCoord++){
 		f[zCoord].Start(x, y);
+	
 	}
+	cout << x << " ";
+	cout << y;
+	cout << endl;
+	system("pause"); system("cls");
 
-	//User input for direction
-	cout << "Choose a direction: " << endl;
-	cout << "(w,a,s,d)" << endl;
-	cin >> dir;
+	game a;
 
-	//Testing the dir value to see if the user can move that way
-	switch (dir){
-	case 'w':
-		f[z].CanMove(x, y + 1);
-		break;
-	case'a':
-		f[z].CanMove(x - 1, y);
-	case's':
-		f[z].CanMove(x, y - 1);
-	case'd':
-		f[z].CanMove(x + 1, y);
-	}
-}
+	a.begin();
+
+
+	
 
 
 void Initial(Floor f[]){
 	//Initialize values
 	fstream in;
 	in.open("map.txt", ios::in);
-	for (int i = 0; i < 5; i++){
-		f[i].readin(in);
+	if (!in.is_open()) {
+		cout << "Unable to open file" << endl;
+		return;
+	}
+	else {
+		for (int i = 0; i < 5; i++){
+			for (int y = 0; y < 6; y++) {
+				for (int x = 0; x < 6; x++) {
+					char c;
+					in >> c;
+					f[i].Set(x, y, c);
+				}
+			}
+		}
 	}
 	in.close();
 }

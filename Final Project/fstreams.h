@@ -10,11 +10,13 @@ private:
 	char map[6][6];
 public:
 	Floor();
-	void readin(fstream &in);
 	bool CanMove(int x, int y);
 	void Start(int &x, int &y);
 	
 	//Getters
 	char Get(int x, int y);
+
+	//Setters
+	void Set(int x, int y, char v);
 };
 
