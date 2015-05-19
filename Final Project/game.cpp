@@ -14,13 +14,19 @@ game::game(){
 void game::begin(){
 	cout << "Your in the maze." << endl;
 	cout << "Get the f*$% out!" << endl;
-	system("pause");
+	system("pause"); system("cls");
+
+	int a = 0;
 
 	do{
+		
 		direction();
+		system("pause"); system("cls");
 
-	} while (x!=xEnd && y!=yEnd, x!=zEnd)
+	} while (a == 0);
 }
+
+//} while (x!=xEnd && y!=yEnd, x!=zEnd)
 
 //Testing the dir value to see if the user can move that way
 void game::direction(){
@@ -38,16 +44,40 @@ void game::direction(){
 			cout << "You moved one space North." << endl;
 		}
 		else{
-			cout << "You stupid." << endl;
+			cout << "There is a wall there." << endl;
 		}
-
+		
 		break;
 	case'a':
-		f[z].CanMove(x - 1, y);
+		if(f[z].CanMove(x - 1, y)){
+			cout << "You moved one space East." << endl;
+			x--;
+		}
+		else{
+			cout << "There is a wall there." << endl;
+		}
+		break;
 	case's':
-		f[z].CanMove(x, y - 1);
+		if (f[z].CanMove(x, y - 1)){
+			cout << "You moved one space South." << endl;
+			y--;
+		}
+		else{
+			cout << "There is a wall there." << endl;
+		}
+		break;
 	case'd':
-		f[z].CanMove(x + 1, y);
+		if (f[z].CanMove(x + 1, y)){
+			cout << "You moved one space West." << endl;
+			x++;
+		}
+		else{
+			cout << "There is a wall there." << endl;
+		}
+		break;
+	default:
+		cout << "That is not a valid input." << endl;
+		cout << "You stupid." << endl;
+		break;
 	}
-
 }
