@@ -1,6 +1,7 @@
 #include "fstreams.h"
 #include <fstream>
 
+//Constructor
 Floor::Floor(){
 	for (int x = 0; x < 6; x++){
 		for (int y = 0; y < 6; y++){
@@ -10,6 +11,7 @@ Floor::Floor(){
 }
 
 void Floor::Start(int &xCoord, int &yCoord){
+	//Don't need
 	for (int y = 0; y < 6; y++){
 		for (int x = 0; x < 6; x++){
 			cout << map[x][y];
@@ -24,9 +26,6 @@ void Floor::Start(int &xCoord, int &yCoord){
 				xCoord = x;
 				yCoord = y;
 				return;
-			}
-			if (f[z + 1].Get(x, y) != '*'){
-
 			}
 		}
 	}
@@ -57,6 +56,6 @@ char Floor::Get(int x, int y){
 }
 
 //Setters
-void Floor::Set(int x, int y, char v) {
-	map[x][y] = v;
+void Floor::Set(int x, int y, char c) {
+	map[x][y] = c;
 }

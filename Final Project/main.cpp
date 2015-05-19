@@ -17,11 +17,12 @@ void main(){
 	Floor f[5];
 
 	Initial(f);
+	
 
 	cout << "The map." << endl;
 	for (int zCoord = 0; zCoord < 5; zCoord++){
 		f[zCoord].Start(x, y);
-	
+
 	}
 	cout << x << " ";
 	cout << y;
@@ -31,12 +32,13 @@ void main(){
 	game a;
 
 	a.begin();
+}
 
 
 	
 
 
-void Initial(Floor f[]){
+void Initial(Floor f[]) {
 	//Initialize values
 	fstream in;
 	in.open("map.txt", ios::in);
