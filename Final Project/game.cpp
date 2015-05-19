@@ -16,10 +16,13 @@ void game::begin(){
 	cout << "Get the f*$% out!" << endl;
 	system("pause");
 
+	do{
+		direction();
 
+	} while (x!=xEnd && y!=yEnd, x!=zEnd)
 }
 
-
+//Testing the dir value to see if the user can move that way
 void game::direction(){
 	char dir;
 
@@ -36,9 +39,8 @@ void game::direction(){
 		}
 		else{
 			cout << "You stupid." << endl;
-
 		}
-	
+
 		break;
 	case'a':
 		f[z].CanMove(x - 1, y);
@@ -46,6 +48,6 @@ void game::direction(){
 		f[z].CanMove(x, y - 1);
 	case'd':
 		f[z].CanMove(x + 1, y);
+	}
 
 }
-//Testing the dir value to see if the user can move that way

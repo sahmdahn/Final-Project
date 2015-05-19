@@ -11,14 +11,14 @@ Floor::Floor(){
 }
 
 void Floor::Start(int &xCoord, int &yCoord){
-	//Don't need
-	for (int y = 0; y < 6; y++){
+	//Test
+	/*for (int y = 0; y < 6; y++){
 		for (int x = 0; x < 6; x++){
 			cout << map[x][y];
 		}
 		cout << endl;
 	}
-	system("pause");
+	system("pause");*/
 	
 	for (int y = 0; y < 6; y++){
 		for (int x = 0; x < 6; x++){
