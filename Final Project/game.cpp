@@ -5,6 +5,8 @@
 #include "game.h"
 #include "fstreams.h"
 
+int instruct(char dir);
+
 game::game(){
 	x = 0;
 	y = 1;
@@ -30,12 +32,9 @@ void game::begin(){
 
 //Testing the dir value to see if the user can move that way
 void game::direction(){
-	char dir;
-
-	//User input for direction
-	cout << "Choose a direction: " << endl;
-	cout << "(w,a,s,d)" << endl;
-	cin >> dir;
+	int choice;
+	choice = instruct();
+	
 
 	switch (dir){
 	case 'w':
@@ -78,6 +77,42 @@ void game::direction(){
 	default:
 		cout << "That is not a valid input." << endl;
 		cout << "You stupid." << endl;
+		break;
+	}
+}
+
+int instruct(char dir){
+	//User input for direction
+	cout << "Choose a direction: " << endl;
+	cout << "(w,a,s,d)" << endl;
+	cin >> dir;
+	return dir;
+}
+
+void game::HandleMove(int newx, int newy){
+	x = newx;
+	y = newy;
+
+	switch (f[z].Get(x, y)){
+	case '*':
+
+		break;
+	case 1:
+		z = 1;
+		break;
+	case 2:
+		z = 2;
+		break;
+	case 3:
+		z = 3;
+		break;
+	case 4:
+		z = 4;
+		break;
+	case 5:
+		z = 5;
+		break;
+	case 'E':
 		break;
 	}
 }
