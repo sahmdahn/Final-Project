@@ -18,7 +18,6 @@ void game::begin(){
 	cout << "Get the f*$% out!" << endl;
 	system("pause"); system("cls");
 
-	int a = 0;
 
 	do{
 		
@@ -94,9 +93,6 @@ void game::HandleMove(int newx, int newy){
 	y = newy;
 
 	switch (f[z].Get(x, y)){
-	case '*':
-
-		break;
 	case 1:
 		z = 1;
 		break;
@@ -113,6 +109,20 @@ void game::HandleMove(int newx, int newy){
 		z = 5;
 		break;
 	case 'E':
+		if (TheEnd()){
+
+		}
+		else {
+			a = 1;
+		}
 		break;
 	}
+}
+
+bool game::TheEnd() {
+	char c;
+	cout << "Try again [Y/N]?" << endl;
+	cin >> c;
+	
+	if ()
 }

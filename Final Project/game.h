@@ -9,6 +9,7 @@ using namespace std;
 
 class game{
 private:
+	int a = 0;
 	int x;
 	int y;
 	int z;
@@ -19,6 +20,6 @@ public:
 	void begin();
 	void direction();
 	void HandleMove(int newx, int newy);
-
+	bool TheEnd();
 };
 
