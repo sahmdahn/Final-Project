@@ -5,19 +5,19 @@
 #include "game.h"
 #include "fstreams.h"
 
-int instruct(char dir);
+int instruct(char tmp);
 
 game::game(){
 	x = 0;
 	y = 1;
 	z = 0;
+	a = 0;
 }
 
 void game::begin(){
 	cout << "Your in the maze." << endl;
 	cout << "Get the f*$% out!" << endl;
 	system("pause"); system("cls");
-
 
 	do{
 		
@@ -31,11 +31,11 @@ void game::begin(){
 
 //Testing the dir value to see if the user can move that way
 void game::direction(){
-	int choice;
-	choice = instruct(dir);
+	char dir;
+	dir = instruct(tmp);
 	
 
-	switch (choice){
+	switch (dir){
 	case 'w':
 		if (f[z].CanMove(x, y + 1)){
 			y++;
@@ -80,12 +80,12 @@ void game::direction(){
 	}
 }
 
-int instruct(char dir){
+int instruct(char tmp){
 	//User input for direction
 	cout << "Choose a direction: " << endl;
 	cout << "(w,a,s,d)" << endl;
-	cin >> dir;
-	return dir;
+	cin >> tmp;
+	return tmp;
 }
 
 void game::HandleMove(int newx, int newy){
@@ -110,10 +110,26 @@ void game::HandleMove(int newx, int newy){
 		break;
 	case 'E':
 		if (TheEnd()){
-
+			z = 0;
+			for (int zCoord = 0; zCoord < 5; zCoord++){
+				int xTemp = -1, yTemp = -1;
+				f[zCoord].Start(xTemp, yTemp);
+				if (xTemp != -1) {
+					x = xTemp;
+					y = yTemp;
+					z = zCoord;
+					break;
+				}
+				else{
+					cout << "System Error!" << endl;
+					cout << "&(*^UI&*F^*$Giy7t%&&^%^%**&ktg6u5^F^" << endl;
+				}
+			}
 		}
 		else {
+			//false
 			a = 1;
+			//x != xEnd && y != yEnd, x != zEnd)
 		}
 		break;
 	}
@@ -124,5 +140,12 @@ bool game::TheEnd() {
 	cout << "Try again [Y/N]?" << endl;
 	cin >> c;
 	
-	if ()
+	if (c == 'y'){
+		return true;
+	}
+	else{
+		cout << "You have chosen to exit the game." << endl;
+		cout << "Thanks for playing!" << endl;
+		return false;
+	}
 }

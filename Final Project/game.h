@@ -9,11 +9,11 @@ using namespace std;
 
 class game{
 private:
-	int a = 0;
 	int x;
 	int y;
 	int z;
-	char dir;
+	int a;
+	char tmp;
 	Floor f[5];
 public:
 	game();
@@ -22,4 +22,3 @@ public:
 	void HandleMove(int newx, int newy);
 	bool TheEnd();
 };
-
