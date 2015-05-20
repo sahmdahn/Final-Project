@@ -33,10 +33,10 @@ void game::begin(){
 //Testing the dir value to see if the user can move that way
 void game::direction(){
 	int choice;
-	choice = instruct();
+	choice = instruct(dir);
 	
 
-	switch (dir){
+	switch (choice){
 	case 'w':
 		if (f[z].CanMove(x, y + 1)){
 			y++;
