@@ -10,6 +10,18 @@ using namespace std;
 void Initial(Floor f[]);
 
 void main(){
+
+	cout << "========================================\n\n";
+	cout << "THE 3-D MAZE\n\n";
+	cout << "Created By:\n";
+	cout << "Project Manager: Sean Traynor\n";
+	cout << "Quality Assurance: Alex Mann\n";
+	cout << "General Developer: Sean Mason\n\n";
+	cout << "Instructor: David Marchbanks\n\n";
+	cout << "========================================\n\n";
+
+	system("pause"); system("cls");
+
 	int x = -1;
 	int y = -1;
 	int z = -1;
