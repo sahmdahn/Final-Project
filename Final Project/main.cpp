@@ -7,8 +7,6 @@
 
 using namespace std;
 
-void Initial(Floor f[]);
-
 void main(){
 
 	cout << "========================================\n\n";
@@ -28,40 +26,12 @@ void main(){
 
 	Floor f[5];
 
-	Initial(f);
-	
-
 	for (int zCoord = 0; zCoord < 5; zCoord++){
 		f[zCoord].Start(x, y);
 
 	}
-	//system("pause"); system("cls");
 
 	game a;
-
+	a.Initial();
 	a.begin();
-}
-
-
-
-void Initial(Floor f[]) {
-	//Initialize values
-	fstream in;
-	in.open("map.txt", ios::in);
-	if (!in.is_open()) {
-		cout << "Unable to open file" << endl;
-		return;
-	}
-	else {
-		for (int i = 0; i < 5; i++){
-			for (int y = 0; y < 6; y++) {
-				for (int x = 0; x < 6; x++) {
-					char c;
-					in >> c;
-					f[i].Set(x, y, c);
-				}
-			}
-		}
-	}
-	in.close();
 }

@@ -15,6 +15,33 @@ game::game(){
 	a = 0;
 }
 
+
+
+void game::Initial() {
+	//Initialize values
+	fstream in;
+	in.open("map.txt", ios::in);
+	if (!in.is_open()) {
+		cout << "Unable to open file" << endl;
+		return;
+	}
+	else {
+		for (int i = 0; i < 5; i++){
+			for (int y = 0; y < 6; y++) {
+				for (int x = 0; x < 6; x++) {
+					char c;
+					in >> c;
+					f[i].Set(x, y, c);
+				}
+			}
+		}
+	}
+	in.close();
+
+		
+}
+
+
 void game::begin(){
 	cout << "Your in the maze." << endl;
 	cout << "Get the f*$% out!" << endl;
@@ -41,16 +68,17 @@ void game::direction(){
 		if (f[z].CanMove(x, y - 1)){
 			y--;
 			cout << "You moved one space North." << endl;
+			HandleMove(x, y);
 		}
 		else{
 			cout << "There is a wall there." << endl;
-		}
-		
+		}		
 		break;
 	case'a':
 		if(f[z].CanMove(x - 1, y)){
-			cout << "You moved one space West." << endl;
 			x--;
+			cout << "You moved one space West." << endl;
+			HandleMove(x, y);
 		}
 		else{
 			cout << "There is a wall there." << endl;
@@ -58,8 +86,9 @@ void game::direction(){
 		break;
 	case's':
 		if (f[z].CanMove(x, y + 1)){
-			cout << "You moved one space South." << endl;
 			y++;
+			cout << "You moved one space South." << endl;
+			HandleMove(x, y);
 		}
 		else{
 			cout << "There is a wall there." << endl;
@@ -67,8 +96,9 @@ void game::direction(){
 		break;
 	case'd':
 		if (f[z].CanMove(x + 1, y)){
-			cout << "You moved one space East." << endl;
 			x++;
+			cout << "You moved one space East." << endl;
+			HandleMove(x, y);
 		}
 		else{
 			cout << "There is a wall there." << endl;
@@ -79,7 +109,8 @@ void game::direction(){
 		cout << "You stupid." << endl;
 		break;
 	}
-	Sleep(500); system("cls");
+
+	system("pause"); system("cls");
 }
 
 int instruct(char tmp){
@@ -90,4 +121,87 @@ int instruct(char tmp){
 	return tmp;
 }
 
+/*Testing the value to make sure its not
+biggger/smaller than the array
+And that it doesnt hit a wall*/
+bool Floor::CanMove(int x, int y){
+	if (x < 0 || x>5){
+		return false;
+	}
+	if (y < 0 || y>5){
+		return false;
+	}
+	if (map[x][y] == '*'){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
 
+//Tests user input to see if they can move their on the map
+void game::HandleMove(int newx, int newy){
+	x = newx;
+	y = newy;
+
+	switch (f[z].Get(x, y)){
+	case 1:
+		cout << "You are now on floor one." << endl;
+		z = 1;
+		break;
+	case 2:
+		cout << "You are now on floor two." << endl;
+		z = 2;
+		break;
+	case 3:
+		z = 3;
+		break;
+	case 4:
+		z = 4;
+		break;
+	case 5:
+		z = 5;
+		break;
+	case 'E':
+		if (TheEnd()){
+			z = 0;
+			for (int zCoord = 0; zCoord < 5; zCoord++){
+				int xTemp = -1, yTemp = -1;
+				f[zCoord].Start(xTemp, yTemp);
+				if (xTemp != -1) {
+					x = xTemp;
+					y = yTemp;
+					z = zCoord;
+					break;
+				}
+				else{
+					cout << "System Error!" << endl;
+					cout << "&(*^UI&*F^*$Giy7t%KJ&^%^45**&kt5^F^" << endl;
+				}
+			}
+		}
+		else {
+			//false
+			a = 1;
+			//x != xEnd && y != yEnd, x != zEnd)
+		}
+		break;
+	}
+}
+
+bool game::TheEnd() {
+	char c;
+	cout << "Try again [Y/N]?" << endl;
+	cin >> c;
+
+	if (c == 'y'){
+		return true;
+	}
+	else{
+		cout << "You have chosen to exit the game." << endl;
+		cout << "Thanks for playing!" << endl;
+		return false;
+	}
+}
+
+//Setters

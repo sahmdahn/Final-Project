@@ -17,6 +17,6 @@ public:
 	char Get(int x, int y);
 
 	//Setters
-	void Set(int x, int y, char v);
+	void Set(int x, int y, char c);
 };
 

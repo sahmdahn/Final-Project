@@ -1,5 +1,6 @@
-#include "fstreams.h"
 #include <fstream>
+
+#include "fstreams.h"
 
 //Constructor
 Floor::Floor(){
@@ -12,14 +13,15 @@ Floor::Floor(){
 
 void Floor::Start(int &xCoord, int &yCoord){
 	//Test
-	/*for (int y = 0; y < 6; y++){
+	/*
+	for (int y = 0; y < 6; y++){
 		for (int x = 0; x < 6; x++){
 			cout << map[x][y];
 		}
 		cout << endl;
 	}
-	system("pause");*/
-	
+	system("pause");
+	*/
 	for (int y = 0; y < 6; y++){
 		for (int x = 0; x < 6; x++){
 			if (map[x][y] == 'S'){
@@ -30,25 +32,6 @@ void Floor::Start(int &xCoord, int &yCoord){
 		}
 	}
 }
-
-/*Testing the value to make sure its not
-biggger/smaller than the array*/
-bool Floor::CanMove(int x, int y){
-	if (x < 0 || x>5){
-		return false;
-	}
-	if (y < 0 || y>5 ){
-		return false;
-	}
-
-	switch (map[x][y]){
-	case '*':
-		return false;
-	default:
-		return true;
-	}
-}
-
 
 //Getters
 char Floor::Get(int x, int y){
