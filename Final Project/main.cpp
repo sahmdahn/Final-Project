@@ -31,23 +31,17 @@ void main(){
 	Initial(f);
 	
 
-	cout << "The map." << endl;
 	for (int zCoord = 0; zCoord < 5; zCoord++){
 		f[zCoord].Start(x, y);
 
 	}
-	cout << x << " ";
-	cout << y;
-	cout << endl;
-	system("pause"); system("cls");
+	//system("pause"); system("cls");
 
 	game a;
 
 	a.begin();
 }
 
-
-	
 
 
 void Initial(Floor f[]) {

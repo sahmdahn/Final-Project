@@ -34,10 +34,10 @@ void Floor::Start(int &xCoord, int &yCoord){
 /*Testing the value to make sure its not
 biggger/smaller than the array*/
 bool Floor::CanMove(int x, int y){
-	if (x < 0 || x>6){
+	if (x < 0 || x>5){
 		return false;
 	}
-	if (y < 0 || y>6){
+	if (y < 0 || y>5 ){
 		return false;
 	}
 
