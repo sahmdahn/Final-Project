@@ -30,19 +30,19 @@ void game::HandleMove(int newx, int newy){
 
 	switch (f[z].Get(x, y)){
 	case 1:
-		z = 1;
+		z = 0;
 		break;
 	case 2:
-		z = 2;
+		z = 1;
 		break;
 	case 3:
-		z = 3;
+		z = 2;
 		break;
 	case 4:
-		z = 4;
+		z = 3;
 		break;
 	case 5:
-		z = 5;
+		z = 4;
 		break;
 	case 'E':
 		if (TheEnd()){
