@@ -36,15 +36,13 @@ void game::Initial() {
 			}
 		}
 	}
-	in.close();
-
-		
+	in.close();		
 }
 
 
 void game::begin(){
 	cout << "Your in the maze." << endl;
-	cout << "Get the f*$% out!" << endl;
+	cout << "Get out!" << endl;
 	system("pause"); system("cls");
 
 	do{
@@ -110,6 +108,7 @@ void game::direction(){
 		break;
 	}
 
+
 	system("pause"); system("cls");
 }
 
@@ -145,22 +144,30 @@ void game::HandleMove(int newx, int newy){
 	y = newy;
 
 	switch (f[z].Get(x, y)){
-	case 1:
+	case '1':
 		cout << "You are now on floor one." << endl;
+		system("pause");
+		z = 0;
+		break;
+	case '2':
+		cout << "You are now on floor two." << endl;
+		system("pause");
 		z = 1;
 		break;
-	case 2:
-		cout << "You are now on floor two." << endl;
+	case '3':
+		cout << "You are now on floor three." << endl;
+		system("pause");
 		z = 2;
 		break;
-	case 3:
+	case '4':
+		cout << "You are now on floor four." << endl;
+		system("pause");
 		z = 3;
 		break;
-	case 4:
+	case '5':
+		cout << "You are now on floor five." << endl;
+		system("pause");
 		z = 4;
-		break;
-	case 5:
-		z = 5;
 		break;
 	case 'E':
 		if (TheEnd()){
@@ -187,7 +194,7 @@ void game::HandleMove(int newx, int newy){
 		}
 		break;
 	}
-}
+};
 
 bool game::TheEnd() {
 	char c;
@@ -203,5 +210,3 @@ bool game::TheEnd() {
 		return false;
 	}
 }
-
-//Setters

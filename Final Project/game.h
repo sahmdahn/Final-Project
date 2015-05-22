@@ -22,7 +22,4 @@ public:
 	void direction();
 	void HandleMove(int newx, int newy);
 	bool TheEnd();
-
-	
-	
 };
