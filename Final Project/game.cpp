@@ -8,10 +8,12 @@
 
 int instruct(char tmp, int z);
 
+//Constructor
 game::game(){
 	x = 0;
 	y = 1;
 	z = 0;
+	a = 0;
 }
 
 void game::Initial() {
@@ -45,7 +47,7 @@ void game::begin(){
 		
 		direction();
 
-	} while (true);
+	} while (a==0);
 }
 
 //Testing the dir value to the array to see if the user can move that way
@@ -103,6 +105,7 @@ void game::direction(){
 	system("pause"); system("cls");
 }
 
+
 int instruct(char tmp, int z){
 	//User input for direction
 	cout << "You are on floor " << z + 1 << endl;
@@ -119,10 +122,10 @@ bool Floor::CanMove(int x, int y){
 	if (x < 0 || x>5){
 		return false;
 	}
-	if (y < 0 || y>5){
+	else if (y < 0 || y>5){
 		return false;
 	}
-	if (map[x][y] == '*'){
+	else if (map[x][y] == '*'){
 		return false;
 	}
 	else{
@@ -156,11 +159,14 @@ void game::HandleMove(int newx, int newy){
 		cout << "You are now on floor five." << endl;
 		z = 4;
 		break;
+	case's':
+		cout << "Your back at the start :(." << endl;
+		break;
 	case 'E':
 		if (TheEnd()){
 			z = 0;
+			int xTemp = -1, yTemp = -1;
 			for (int zCoord = 0; zCoord < 5; zCoord++){
-				int xTemp = -1, yTemp = -1;
 				f[zCoord].Start(xTemp, yTemp);
 				if (xTemp != -1) {
 					x = xTemp;
@@ -174,22 +180,30 @@ void game::HandleMove(int newx, int newy){
 				}
 			}
 		}
+		else{
+			a = 1;
+		}
 		break;
 	}
 };
 
 bool game::TheEnd() {
 	char c;
+
 	cout << "Try again [Y/N]?" << endl;
 	cin >> c;
 	system("cls");
 
-	if (c == 'y'){
-		return true;
-	}
-	else{
-		cout << "You have chosen to exit the game." << endl;
-		cout << "Thanks for playing!" << endl;
-		return false;
-	}
+		if (c == 'y'){
+			return true;
+		}
+		else if (c == 'n'){
+			cout << "You have chosen to exit the game." << endl;
+			cout << "Thanks for playing!" << endl;
+			return false;
+		}
+		else{
+			cout << "Invalid Input." << endl;
+			Sleep(500); system("cls");
+		}
 }
