@@ -12,7 +12,6 @@ private:
 	int x;
 	int y;
 	int z;
-	int a;
 	char tmp;
 	Floor f[5];
 public:

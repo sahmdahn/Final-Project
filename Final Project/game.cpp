@@ -6,16 +6,13 @@
 #include "game.h"
 #include "fstreams.h"
 
-int instruct(char tmp);
+int instruct(char tmp, int z);
 
 game::game(){
 	x = 0;
 	y = 1;
 	z = 0;
-	a = 0;
 }
-
-
 
 void game::Initial() {
 	//Initialize values
@@ -39,7 +36,6 @@ void game::Initial() {
 	in.close();		
 }
 
-
 void game::begin(){
 	cout << "Your in the maze." << endl;
 	cout << "Get out!" << endl;
@@ -49,18 +45,15 @@ void game::begin(){
 		
 		direction();
 
-	} while (a == 0);
+	} while (true);
 }
-
-//(x!=xEnd && y!=yEnd, x!=zEnd)
 
 //Testing the dir value to the array to see if the user can move that way
 //Moving the user that way
 void game::direction(){
 	char dir;
-	dir = instruct(tmp);
+	dir = instruct(tmp, z);
 	
-
 	switch (dir){
 	case 'w':
 		if (f[z].CanMove(x, y - 1)){
@@ -107,13 +100,12 @@ void game::direction(){
 		cout << "You stupid." << endl;
 		break;
 	}
-
-
 	system("pause"); system("cls");
 }
 
-int instruct(char tmp){
+int instruct(char tmp, int z){
 	//User input for direction
+	cout << "You are on floor " << z + 1 << endl;
 	cout << "Choose a direction: " << endl;
 	cout << "W = North	" << "A = West	" << "S = South	" << "D = East	" << endl;;
 	cin >> tmp;
@@ -138,7 +130,7 @@ bool Floor::CanMove(int x, int y){
 	}
 }
 
-//Tests user input to see if they can move their on the map
+//Handles the users input to see if they can move their on the map
 void game::HandleMove(int newx, int newy){
 	x = newx;
 	y = newy;
@@ -146,27 +138,22 @@ void game::HandleMove(int newx, int newy){
 	switch (f[z].Get(x, y)){
 	case '1':
 		cout << "You are now on floor one." << endl;
-		system("pause");
 		z = 0;
 		break;
 	case '2':
 		cout << "You are now on floor two." << endl;
-		system("pause");
 		z = 1;
 		break;
 	case '3':
 		cout << "You are now on floor three." << endl;
-		system("pause");
 		z = 2;
 		break;
 	case '4':
 		cout << "You are now on floor four." << endl;
-		system("pause");
 		z = 3;
 		break;
 	case '5':
 		cout << "You are now on floor five." << endl;
-		system("pause");
 		z = 4;
 		break;
 	case 'E':
@@ -187,11 +174,6 @@ void game::HandleMove(int newx, int newy){
 				}
 			}
 		}
-		else {
-			//false
-			a = 1;
-			//x != xEnd && y != yEnd, x != zEnd)
-		}
 		break;
 	}
 };
@@ -200,6 +182,7 @@ bool game::TheEnd() {
 	char c;
 	cout << "Try again [Y/N]?" << endl;
 	cin >> c;
+	system("cls");
 
 	if (c == 'y'){
 		return true;
