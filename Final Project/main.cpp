@@ -26,11 +26,6 @@ void main(){
 
 	Floor f[5];
 
-	for (int zCoord = 0; zCoord < 5; zCoord++){
-		f[zCoord].Start(x, y);
-
-	}
-
 	game a;
 	a.Initial();
 	a.begin();

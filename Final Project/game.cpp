@@ -43,15 +43,18 @@ void game::begin(){
 	cout << "Get out!" << endl;
 	system("pause"); system("cls");
 
+	for (int zCoord = 0; zCoord < 5; zCoord++){
+		f[zCoord].Start(x, y);
+	}
+
 	do{
-		
+
 		direction();
 
-	} while (a==0);
+	} while (a == 0);
 }
 
 //Testing the dir value to the array to see if the user can move that way
-//Moving the user that way
 void game::direction(){
 	char dir;
 	dir = instruct(tmp, z);
@@ -62,21 +65,25 @@ void game::direction(){
 			y--;
 			cout << "You moved one space North." << endl;
 			cout << endl;
+			Sleep(500);
 			HandleMove(x, y);
 		}
 		else{
+			Sleep(500);
 			cout << "There is a wall there." << endl;
 			cout << endl;
-		}		
+		}
 		break;
 	case'a':
-		if(f[z].CanMove(x - 1, y)){
+		if (f[z].CanMove(x - 1, y)){
 			x--;
 			cout << "You moved one space West." << endl;
 			cout << endl;
+			Sleep(500);
 			HandleMove(x, y);
 		}
 		else{
+			Sleep(500);
 			cout << "There is a wall there." << endl;
 			cout << endl;
 		}
@@ -86,9 +93,11 @@ void game::direction(){
 			y++;
 			cout << "You moved one space South." << endl;
 			cout << endl;
+			Sleep(500);
 			HandleMove(x, y);
 		}
 		else{
+			Sleep(500);
 			cout << "There is a wall there." << endl;
 			cout << endl;
 		}
@@ -98,35 +107,40 @@ void game::direction(){
 			x++;
 			cout << "You moved one space East." << endl;
 			cout << endl;
+			Sleep(500);
 			HandleMove(x, y);
 		}
 		else{
+			Sleep(500);
 			cout << "There is a wall there." << endl;
 			cout << endl;
 		}
 		break;
+	case '9':
+		system("cls");
+		cout << "You dirty little cheater >:)" << endl;
+		cout << "You have been teleported to the end." << endl;
+		TheEnd();
+		break;
+
 	default:
 		cout << "That is not a valid input." << endl;
 		cout << "You stupid." << endl;
 		cout << endl;
 		break;
 	}
-	system("pause"); system("cls");
 }
 
-
+//User input for direction
 int instruct(char tmp, int z){
-	//User input for direction
-	cout << "You are on floor " << z + 1 << endl;
+	cout << "FLOOR " << z + 1 << endl;
 	cout << "Choose a direction: " << endl;
-	cout << "W = North	" << "A = West	" << "S = South	" << "D = East	" << endl;;
+	cout << "w = North	" << "a = West	" << "s = South	" << "d = East	" << endl;;
 	cin >> tmp;
 	return tmp;
 }
 
-/*Testing the value to make sure its not
-biggger/smaller than the array
-And that it doesnt hit a wall*/
+//Testing the value
 bool Floor::CanMove(int x, int y){
 	if (x < 0 || x>5){
 		return false;
@@ -149,26 +163,32 @@ void game::HandleMove(int newx, int newy){
 
 	switch (f[z].Get(x, y)){
 	case '1':
-		cout << "You are now on floor one." << endl;
+		system("cls");
+		cout << "You are now on FLOOR 1." << endl;
 		z = 0;
 		break;
 	case '2':
-		cout << "You are now on floor two." << endl;
+		system("cls");
+		cout << "You are now on FLOOR 2." << endl;
 		z = 1;
 		break;
 	case '3':
-		cout << "You are now on floor three." << endl;
+		system("cls");
+		cout << "You are now on FLOOR 3." << endl;
 		z = 2;
 		break;
 	case '4':
-		cout << "You are now on floor four." << endl;
+		system("cls");
+		cout << "You are now on FLOOR 4." << endl;
 		z = 3;
 		break;
 	case '5':
-		cout << "You are now on floor five." << endl;
+		system("cls");
+		cout << "You are now on FLOOR 5." << endl;
 		z = 4;
 		break;
-	case's':
+	case'S':
+		system("cls");
 		cout << "Your back at the start :(." << endl;
 		break;
 	case 'E':
@@ -189,9 +209,6 @@ void game::HandleMove(int newx, int newy){
 				}
 			}
 		}
-		else{
-			a = 1;
-		}
 		break;
 	}
 };
@@ -200,18 +217,19 @@ bool game::TheEnd() {
 	char c;
 
 	do{
-		cout << "CONGRATULATIONS!!! You have reached the END!!!";
-		cout << endl;
+		cout << "CONGRATULATIONS!!! You have reached the END!!!" << endl;
 		cout << "Try again [Y/N]?" << endl;
 		cin >> c;
 		system("cls");
 
 		if (c == 'y'){
-			return true;
+			begin();
 		}
 		else if (c == 'n'){
 			cout << "You have chosen to exit the game." << endl;
 			cout << "Thanks for playing!" << endl;
+			system("pause");
+			a = 1;
 			return false;
 		}
 		else{
