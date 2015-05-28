@@ -61,45 +61,54 @@ void game::direction(){
 		if (f[z].CanMove(x, y - 1)){
 			y--;
 			cout << "You moved one space North." << endl;
+			cout << endl;
 			HandleMove(x, y);
 		}
 		else{
 			cout << "There is a wall there." << endl;
+			cout << endl;
 		}		
 		break;
 	case'a':
 		if(f[z].CanMove(x - 1, y)){
 			x--;
 			cout << "You moved one space West." << endl;
+			cout << endl;
 			HandleMove(x, y);
 		}
 		else{
 			cout << "There is a wall there." << endl;
+			cout << endl;
 		}
 		break;
 	case's':
 		if (f[z].CanMove(x, y + 1)){
 			y++;
 			cout << "You moved one space South." << endl;
+			cout << endl;
 			HandleMove(x, y);
 		}
 		else{
 			cout << "There is a wall there." << endl;
+			cout << endl;
 		}
 		break;
 	case'd':
 		if (f[z].CanMove(x + 1, y)){
 			x++;
 			cout << "You moved one space East." << endl;
+			cout << endl;
 			HandleMove(x, y);
 		}
 		else{
 			cout << "There is a wall there." << endl;
+			cout << endl;
 		}
 		break;
 	default:
 		cout << "That is not a valid input." << endl;
 		cout << "You stupid." << endl;
+		cout << endl;
 		break;
 	}
 	system("pause"); system("cls");
@@ -190,9 +199,12 @@ void game::HandleMove(int newx, int newy){
 bool game::TheEnd() {
 	char c;
 
-	cout << "Try again [Y/N]?" << endl;
-	cin >> c;
-	system("cls");
+	do{
+		cout << "CONGRATULATIONS!!! You have reached the END!!!";
+		cout << endl;
+		cout << "Try again [Y/N]?" << endl;
+		cin >> c;
+		system("cls");
 
 		if (c == 'y'){
 			return true;
@@ -206,4 +218,5 @@ bool game::TheEnd() {
 			cout << "Invalid Input." << endl;
 			Sleep(500); system("cls");
 		}
+	} while (c != 'y' || c != 'n');
 }

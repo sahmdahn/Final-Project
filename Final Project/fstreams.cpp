@@ -12,14 +12,6 @@ Floor::Floor(){
 }
 
 void Floor::Start(int &xCoord, int &yCoord){
-	/*for (int y = 0; y < 6; y++){
-		for (int x = 0; x < 6; x++){
-			cout << map[x][y];
-		}
-		cout << endl;
-	}
-	system("pause");
-	*/
 	for (int y = 0; y < 6; y++){
 		for (int x = 0; x < 6; x++){
 			if (map[x][y] == 'S'){
