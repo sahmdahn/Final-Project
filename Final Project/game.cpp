@@ -65,12 +65,14 @@ void game::direction(){
 			y--;
 			cout << "You moved one space North." << endl;
 			cout << endl;
+			cout << endl;
 			Sleep(500);
 			HandleMove(x, y);
 		}
 		else{
 			Sleep(500);
 			cout << "There is a wall there." << endl;
+			cout << endl;
 			cout << endl;
 		}
 		break;
@@ -79,12 +81,14 @@ void game::direction(){
 			x--;
 			cout << "You moved one space West." << endl;
 			cout << endl;
+			cout << endl;
 			Sleep(500);
 			HandleMove(x, y);
 		}
 		else{
 			Sleep(500);
 			cout << "There is a wall there." << endl;
+			cout << endl;
 			cout << endl;
 		}
 		break;
@@ -93,12 +97,14 @@ void game::direction(){
 			y++;
 			cout << "You moved one space South." << endl;
 			cout << endl;
+			cout << endl;
 			Sleep(500);
 			HandleMove(x, y);
 		}
 		else{
 			Sleep(500);
 			cout << "There is a wall there." << endl;
+			cout << endl;
 			cout << endl;
 		}
 		break;
@@ -107,12 +113,14 @@ void game::direction(){
 			x++;
 			cout << "You moved one space East." << endl;
 			cout << endl;
+			cout << endl;
 			Sleep(500);
 			HandleMove(x, y);
 		}
 		else{
 			Sleep(500);
 			cout << "There is a wall there." << endl;
+			cout << endl;
 			cout << endl;
 		}
 		break;
@@ -127,6 +135,8 @@ void game::direction(){
 		cout << "That is not a valid input." << endl;
 		cout << "You stupid." << endl;
 		cout << endl;
+		cout << endl;
+
 		break;
 	}
 }
