@@ -21,7 +21,7 @@ void game::Initial() {
 	fstream in;
 	in.open("map.txt", ios::in);
 	if (!in.is_open()) {
-		cout << "Unable to open file" << endl;
+		cout << "Unable to open file. Try again later" << endl;
 		return;
 	}
 	else {
@@ -39,7 +39,7 @@ void game::Initial() {
 }
 
 void game::begin(){
-	cout << "Your in the maze." << endl;
+	cout << "You are in the maze." << endl;
 	cout << "Get out!" << endl;
 	system("pause"); system("cls");
 
@@ -47,7 +47,7 @@ void game::begin(){
 		f[zCoord].Start(x, y);
 	}
 
-	do{
+	do {
 
 		direction();
 
