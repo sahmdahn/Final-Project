@@ -127,7 +127,7 @@ void game::direction(){
 	case '9':
 		system("cls");
 		cout << "You dirty little cheater >:)" << endl;
-		cout << "You have been teleported to the end." << endl;
+		cout << "You have been teleported to the end." << endl << endl;
 		TheEnd();
 		break;
 
